@@ -1,0 +1,11 @@
+.inside {
+  background-color: lightblue;
+}
+
+.outside {
+  background-color: lightcoral;
+}
+
+div {
+  padding: 8px;
+}

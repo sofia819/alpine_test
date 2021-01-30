@@ -1,0 +1,51 @@
+<html>
+<link rel="stylesheet" href="index.css">
+  <head>
+    <title>Alpine Test</title>
+    <meta charset="UTF-8" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.8/dist/alpine.js"
+      defer
+    ></script>
+  </head>
+
+  <body>
+  <script src="./index.js"></script>
+    <header>
+      <h1>Testing with Alpine.js</h1>
+    </header>
+    <main>
+        <div x-data="{ isOpen: true }">
+            <button @click=" isOpen = !isOpen">Toggle</button>
+            <h1 x-show="isOpen">Toggle for isOpen</h1>
+            <template x-if="isOpen">
+                <h1>Using x-if</h1>
+            </template>
+        </div>
+        
+        <div x-data="mountData()" 
+            x-init="fetchData()">
+            <template x-for="mount in mounts">
+                <div x-show="mount.expansion === 2" x-text="mount.mount_name">
+            </template>
+        </div>
+
+        <h2 x-data="{text: 'outside'}"
+            @mouseenter="text = 'inside'"
+            @mouseleave="text = 'outside'"
+            x-bind:class="text"
+            x-text="text"
+            >
+        </h2>
+        
+        <div x-data="searchData()">
+            <input type="number" x-model.number="num"></input>
+            <div x-text="`ID to search for: ${num}`"></div>
+            <button @click="getMount(num)">Click to fetch from API</button>
+            <div x-text="mount.mount_name"></div>
+        </div>
+
+    </main>
+    <footer></footer>
+  </body>
+</html>
